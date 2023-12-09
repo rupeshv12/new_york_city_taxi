@@ -1,1 +1,12 @@
 #It is used to create dvc pipeline for all ML stages. 
+stages:
+  make_dataset:
+    cmd: python .\src\data\make_dataset.py .\data\raw\test.csv
+    deps:
+    - .\data\raw\test.csv
+    - .\src\data\make_dataset.py
+    params:
+    - make_dataset.test_split
+    - make_dataset.seed
+    outs:
+    - .\data\processed\
